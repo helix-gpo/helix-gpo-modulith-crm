@@ -18,7 +18,7 @@ class ProjectServiceImpl implements ProjectServiceApi, ProjectService {
     private final PartnerServiceApi partnerServiceApi;
     private final AwsServiceApi awsServiceApi;
 
-    @Value("${aws.bucket}")
+    @Value("${aws.bucket.projects}")
     private String awsBucket;
 
     @Override

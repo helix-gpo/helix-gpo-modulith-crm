@@ -13,13 +13,14 @@ spring:
 
 website:
   security:
-    api-key-header: ${WEBSITE_API_KEY_HEADER}
-    api-key: ${WEBSITE_API_KEY}
     api-path: ${PERMITTED_API_PATH}
     actuator-path: ${PERMITTED_ACTUATOR_PATH}
 
 aws:
   region: ${AWS_REGION}
+  bucket:
+    testimonials: ${AWS_TESTIMONIALS_DEV_BUCKET}
+    projects: ${AWS_TESTIMONIALS_DEV_BUCKET}
 
 cors:
   allowed-origins:

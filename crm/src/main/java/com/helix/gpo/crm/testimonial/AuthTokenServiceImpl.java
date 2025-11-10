@@ -11,20 +11,23 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-class AuthTokenServiceImpl {
+class AuthTokenServiceImpl implements AuthTokenService {
 
     private final AuthTokenRepository authTokenRepository;
 
+    @Override
     public String createAuthTokenValue(String projectTitle) {
         String authTokenValue = projectTitle + "_" + UUID.randomUUID();
         return encodeToBase64(authTokenValue);
     }
 
+    @Override
     public void sendTokenMailToProjectPartner(AuthToken authToken) {
         String decodedTokenValue = decodeFromBase64(authToken.getValue());
         // todo: send email with decoded token value
     }
 
+    @Override
     public void validateAuthToken(String authTokenValue) {
         AuthToken authToken = authTokenRepository.findByValue(encodeToBase64(authTokenValue)).orElse(null);
         if (authToken == null || !authToken.getValid() || authToken.getUsed()) {
@@ -33,12 +36,14 @@ class AuthTokenServiceImpl {
         checkIfTestimonialAlreadyExists(authToken);
     }
 
+    @Override
     public void checkIfTestimonialAlreadyExists(AuthToken authToken) {
         if (authToken.getTestimonial() != null) {
             throw new ResourceAlreadyExistsException("AuthToken");
         }
     }
 
+    @Override
     public void invalidateAuthToken(String authTokenValue) {
         AuthToken authToken = authTokenRepository.findByValue(encodeToBase64(authTokenValue)).orElseThrow(
                 () -> new ResourceNotFoundException("AuthToken", "Value",  authTokenValue)

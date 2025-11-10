@@ -26,7 +26,7 @@ class TestimonialServiceImpl implements TestimonialService {
     private final ProjectServiceApi projectServiceApi;
     private final AwsServiceApi awsServiceApi;
 
-    @Value("${aws.bucket}")
+    @Value("${aws.bucket.testimonials}")
     private String awsBucket;
 
     @Override

@@ -13,8 +13,6 @@ spring:
 
 website:
   security:
-    api-key-header: ${WEBSITE_API_KEY_HEADER:WEBSITE_API_KEY_HEADER}
-    api-key: ${WEBSITE_API_KEY:api-key-value}
     api-path: ${PERMITTED_API_PATH:/api/v1/website/**}
     actuator-path: ${PERMITTED_ACTUATOR_PATH:/actuator/**}
 
@@ -22,6 +20,9 @@ aws:
   region: ${AWS_REGION:eu-central-1}
   access-key: ${AWS_DEV_USER_ACCESS_KEY:abc}
   secret-key: ${AWS_DEV_USER_SECRET_KEY:xyz}
+  bucket:
+    testimonials: ${AWS_TESTIMONIALS_DEV_BUCKET:helixgpo-dev-s3-testimonial-images}
+    projects : ${AWS_TESTIMONIALS_DEV_BUCKET:helixgpo-dev-s3-project-images}
 
 cors:
   allowed-origins:
