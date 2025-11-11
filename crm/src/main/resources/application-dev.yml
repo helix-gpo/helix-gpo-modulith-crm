@@ -21,8 +21,8 @@ aws:
   access-key: ${AWS_DEV_USER_ACCESS_KEY:abc}
   secret-key: ${AWS_DEV_USER_SECRET_KEY:xyz}
   bucket:
-    testimonials: ${AWS_TESTIMONIALS_DEV_BUCKET:helixgpo-dev-s3-testimonial-images}
-    projects : ${AWS_TESTIMONIALS_DEV_BUCKET:helixgpo-dev-s3-project-images}
+    testimonials: ${AWS_TESTIMONIALS_DEV_BUCKET:helix-gpo-crm-modulith-dev-s3-testimonial-images}
+    projects : ${AWS_TESTIMONIALS_DEV_BUCKET:helix-gpo-crm-modulith-dev-s3-project-images}
 
 cors:
   allowed-origins:

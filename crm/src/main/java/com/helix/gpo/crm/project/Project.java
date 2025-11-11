@@ -50,9 +50,6 @@ class Project {
     @Column(nullable = false)
     private Long partnerId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Milestone> milestones;
-
     @ElementCollection(targetClass = ProjectTag.class)
     @CollectionTable(
             name = "project_tags",

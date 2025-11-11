@@ -2,7 +2,7 @@ package com.helix.gpo.crm.testimonial;
 
 interface AuthTokenService {
 
-    String createAuthTokenValue(String projectTitle);
+    String createAuthTokenValue(Long projectId);
 
     void sendTokenMailToProjectPartner(AuthToken authToken);
 

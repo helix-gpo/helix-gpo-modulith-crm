@@ -16,8 +16,8 @@ class AuthTokenServiceImpl implements AuthTokenService {
     private final AuthTokenRepository authTokenRepository;
 
     @Override
-    public String createAuthTokenValue(String projectTitle) {
-        String authTokenValue = projectTitle + "_" + UUID.randomUUID();
+    public String createAuthTokenValue(Long projectId) {
+        String authTokenValue = projectId + "_" + UUID.randomUUID();
         return encodeToBase64(authTokenValue);
     }
 

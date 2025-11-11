@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -82,13 +83,13 @@ class TestimonialServiceImpl implements TestimonialService {
                 .mapToInt(Testimonial::getResult)
                 .average()
                 .orElse(0.0);
-        return BigDecimal.valueOf(average);
+
+        return BigDecimal.valueOf(average)
+                .setScale(1, RoundingMode.HALF_UP);
     }
 
     private TestimonialDtoResponse prepareTestimonialDtoResponse(Testimonial testimonial) {
-        String awsBucketKey = testimonial.getImageUrl().isEmpty()
-                ? Constants.PLACEHOLDER_IMAGE
-                : testimonial.getImageUrl();
+        String awsBucketKey = testimonial.getImageUrl();
         String imageUrl = awsServiceApi.generatePresignedUrl(awsBucket, awsBucketKey, testimonial.getContentType());
 
         TestimonialDtoResponse testimonialDtoResponse = TestimonialMapper.mapToTestimonialDto(testimonial, imageUrl);
