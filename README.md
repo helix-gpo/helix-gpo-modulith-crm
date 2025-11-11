@@ -90,3 +90,13 @@ com.helixgpo
 10) jmolecules-ddd
 11) aws-project
 12) commons-io
+
+## Steps:
+- create parameters in aws parameter store (excel-file and ymls)
+- update iam policies and roles (create task definition role and policies) 
+- add task definition to existing cluster
+- update load balancer config
+- update target groups
+- create new db
+- update security groups
+- update bucket content with new staging from website frontend
