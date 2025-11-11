@@ -28,28 +28,35 @@ class AuthTokenServiceImpl implements AuthTokenService {
     }
 
     @Override
-    public void validateAuthToken(String authTokenValue) {
+    public AuthToken validateAuthToken(String authTokenValue) {
         AuthToken authToken = authTokenRepository.findByValue(encodeToBase64(authTokenValue)).orElse(null);
+
+        if (authToken != null) {
+            checkIfTestimonialAlreadyExists(authToken);
+        }
+
         if (authToken == null || !authToken.getValid() || authToken.getUsed()) {
             throw new AuthTokenInvalidException("Invalid auth-token!");
         }
-        checkIfTestimonialAlreadyExists(authToken);
+
+        return authToken;
     }
 
     @Override
     public void checkIfTestimonialAlreadyExists(AuthToken authToken) {
         if (authToken.getTestimonial() != null) {
-            throw new ResourceAlreadyExistsException("AuthToken");
+            throw new ResourceAlreadyExistsException("Feedback");
         }
     }
 
     @Override
-    public void invalidateAuthToken(String authTokenValue) {
+    public void invalidateAuthToken(String authTokenValue, Testimonial testimonial) {
         AuthToken authToken = authTokenRepository.findByValue(encodeToBase64(authTokenValue)).orElseThrow(
                 () -> new ResourceNotFoundException("AuthToken", "Value",  authTokenValue)
         );
         authToken.setUsed(true);
         authToken.setValid(false);
+        authToken.setTestimonial(testimonial);
         authTokenRepository.save(authToken);
     }
 

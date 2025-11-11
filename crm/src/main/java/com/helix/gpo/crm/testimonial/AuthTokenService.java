@@ -6,10 +6,10 @@ interface AuthTokenService {
 
     void sendTokenMailToProjectPartner(AuthToken authToken);
 
-    void validateAuthToken(String authTokenValue);
+    AuthToken validateAuthToken(String authTokenValue);
 
     void checkIfTestimonialAlreadyExists(AuthToken authToken);
 
-    void invalidateAuthToken(String authTokenValue);
+    void invalidateAuthToken(String authTokenValue, Testimonial testimonial);
 
 }

@@ -29,7 +29,4 @@ public class TestimonialDtoRequest {
     @NotNull
     private Boolean showOnWebsite;
 
-    @NotNull
-    private Long projectId;
-
 }

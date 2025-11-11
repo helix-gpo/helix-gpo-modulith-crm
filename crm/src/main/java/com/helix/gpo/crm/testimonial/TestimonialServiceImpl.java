@@ -36,9 +36,9 @@ class TestimonialServiceImpl implements TestimonialService {
     public TestimonialDtoResponse addTestimonial(WebsiteTestimonialRequest websiteTestimonialRequest, MultipartFile image) {
         String authTokenValue = websiteTestimonialRequest.getAuthTokenValue();
 
-        authTokenService.validateAuthToken(authTokenValue);
+        AuthToken authToken = authTokenService.validateAuthToken(authTokenValue);
 
-        Long projectId = websiteTestimonialRequest.getTestimonialDtoRequest().getProjectId();
+        Long projectId = authToken.getProjectId();
         String imageUrl = image == null
                 ? Constants.PLACEHOLDER_IMAGE
                 : saveTestimonialImage(image, projectId);
@@ -55,7 +55,7 @@ class TestimonialServiceImpl implements TestimonialService {
 
         TestimonialDtoResponse testimonialDtoResponse = prepareTestimonialDtoResponse(savedTestimonial);
 
-        authTokenService.invalidateAuthToken(authTokenValue);
+        authTokenService.invalidateAuthToken(authTokenValue, savedTestimonial);
 
         log.info("New Testimonial saved: {}", savedTestimonial);
         return testimonialDtoResponse;

@@ -90,6 +90,3 @@ com.helixgpo
 10) jmolecules-ddd
 11) aws-project
 12) commons-io
-
-## Todos:
-- Add Controller

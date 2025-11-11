@@ -16,6 +16,8 @@ spring:
     multipart:
       max-file-size: 6MB
       max-request-size: 10MB
+  messages:
+    encoding: UTF-8
 
 logging:
   level:
