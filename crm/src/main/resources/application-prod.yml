@@ -19,8 +19,8 @@ website:
 aws:
   region: ${AWS_REGION}
   bucket:
-    testimonials: ${AWS_TESTIMONIALS_DEV_BUCKET}
-    projects: ${AWS_TESTIMONIALS_DEV_BUCKET}
+    testimonials: ${AWS_TESTIMONIALS_PROD_BUCKET}
+    projects: ${AWS_PROJECTS_PROD_BUCKET}
 
 cors:
   allowed-origins:
