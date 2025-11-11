@@ -10,6 +10,6 @@ public interface ProjectServiceApi {
 
     List<WebsiteProjectDto> getAllWebsiteProjects();
 
-    WebsiteProjectDto getProjectByid(Long projectId);
+    WebsiteProjectDto getWebsiteProjectById(Long projectId);
 
 }

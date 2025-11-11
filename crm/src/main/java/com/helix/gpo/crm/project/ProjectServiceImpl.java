@@ -30,7 +30,7 @@ class ProjectServiceImpl implements ProjectServiceApi, ProjectService {
     }
 
     @Override
-    public WebsiteProjectDto getProjectByid(Long projectId) {
+    public WebsiteProjectDto getWebsiteProjectById(Long projectId) {
         Project project = projectRepository.findById(projectId).orElseThrow(
                 () -> new ResourceNotFoundException("Project", "ID", projectId.toString())
         );

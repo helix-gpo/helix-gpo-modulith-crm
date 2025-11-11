@@ -92,7 +92,7 @@ class TestimonialServiceImpl implements TestimonialService {
         String imageUrl = awsServiceApi.generatePresignedUrl(awsBucket, awsBucketKey, testimonial.getContentType());
 
         TestimonialDtoResponse testimonialDtoResponse = TestimonialMapper.mapToTestimonialDto(testimonial, imageUrl);
-        testimonialDtoResponse.setWebsiteProjectDto(projectServiceApi.getProjectByid(testimonial.getProjectId()));
+        testimonialDtoResponse.setWebsiteProjectDto(projectServiceApi.getWebsiteProjectById(testimonial.getProjectId()));
 
         return testimonialDtoResponse;
     }
